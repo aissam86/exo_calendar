@@ -26,7 +26,7 @@
 
     <h1>JS-Calendar</h1>
     <h2>Partie 0 : Générer un &lt;table&gt; pour le mois de janvier</h2>
-    <script type="application/javascript">
+    <!-- <script type="application/javascript">
         console.log("Début");
         
         document.write('<table>');
@@ -46,31 +46,114 @@
         document.write('</table>');
 
         console.log("Fin");
-    </script>
+    </script> -->
 
 
 
     <h2>Partie 1 : Générer un &lt;table&gt; sur plusieurs lignes</h2>
-    <script type="application/javascript">
+    <!-- <script type="application/javascript">
         console.log("Début");
+        
+            let max_col = 7, max_line = 5;
+            let current_day;
+        
+
+            current_day = 1; 
+            let current_line = 1;
+                document.write('<table>');
+                let max_days = 7;
+                current_col = 1;
+                while(current_line <= max_line) {
+                    document.write('<tr>');
+                current_col = 1;
+
+                    while(current_col <= max_col){
+                        document.write('<td>' + current_day + '</td>');
+                        current_col = current_col + 1;
+                        current_day = current_day + 1;
+                    } 
+
+                document.write('</tr>');
+                current_line = current_line + 1
+
+                }
+        
+        document.write('</table>');
 
         console.log("Fin");
-    </script>
+    </script> -->
 
 
 
     <h2>Partie 2 : Générer le mois de janvier</h2>
-    <script type="application/javascript">
+    <!-- <script type="application/javascript">
+        console.log("Début");
+        
+            let max_col = 7, max_line = 5;
+            let current_day;
+        
 
-    </script>
+            current_day = 1; 
+            let current_line = 1;
+                document.write('<table>');
+                let max_days = 7;
+                current_col = 1;
+                while(current_line <= max_line) {
+                    document.write('<tr>');
+                current_col = 1;
+
+                    while(current_col <= max_col && current_day <= 31){
+                        document.write('<td>' + current_day + '</td>');
+                        current_col = current_col + 1;
+                        current_day = current_day + 1;
+                    } 
+
+                document.write('</tr>');
+                current_line = current_line + 1
+
+                }
+        
+        document.write('</table>');
+
+        console.log("Fin");
+
+    </script> -->
 
 
 
     <h2>Partie 3 : Isoler le code dans une fonction</h2>
     <script type="application/javascript">
         "use strict;"
-        function print_table_month(max_days_in_month) {
+        function print_table_month(max_days_in_month, current_day_highlight) {
+             let max_col = 7, max_line = 5;
+            let current_day;
+        
 
+            current_day = 1; 
+            let current_line = 1;
+                document.write('<table>');
+                let max_days = 7;
+                current_col = 1;
+                while(current_line <= max_line) {
+                    document.write('<tr>');
+                current_col = 1;
+
+                    while(current_col <= max_col && current_day <= max_days_in_month){
+                        
+                        if (current_day == current_day_highlight) {
+                            document.write('<td class="today">' + current_day + '</td>')
+                        } else {
+                            document.write('<td>' + current_day + '</td>');
+                        }
+                        current_col = current_col + 1;
+                        current_day = current_day + 1;
+                    } 
+
+                document.write('</tr>');
+                current_line = current_line + 1
+
+                }
+                document.write('</table>');
         }
 
         print_table_month(29);
@@ -79,15 +162,43 @@
 
 
     <h2>Partie 4 : Générer les autres mois</h2>
-    <script type="application/javascript">
+    <!-- <script type="application/javascript">
         console.log("Début");
-
+        let mois = [31,28,31,30,31,30,31,31,30,31,30,31]
+        let noms = ["janvier", "février", "mars"," avril", "mai","juin", "juillet", "aout", "septembre", "octobre", "novembre", "décembre"] 
+                let i = 0
+                while(i < 12){
+                    document.write(noms[i])
+                    print_table_month(mois[i])
+                    i = i + 1
+                }
+        
         console.log("Fin");
-    </script>
+    </script> -->
 
     <h2>Partie 5 : Afficher le jour courant en rouge</h2>
     <script type="application/javascript">
         console.log("Début");
+        let today = new Date();
+            let day = today.getDate();
+            let month = today.getMonth();
+            let mois = [31,28,31,30,31,30,31,31,30,31,30,31]
+        let noms = ["janvier", "février", "mars"," avril", "mai","juin", "juillet", "aout", "septembre", "octobre", "novembre", "décembre"] 
+                let i = 0
+            while(i < 12){
+                 document.write(noms[i])
+                    i = i + 1
+                if(i == month){
+                    print_table_month(mois[i], day)
+                }
+                else{
+                    print_table_month(mois[i], 0)
+                 }  
+                 
+                }
+        
+
+       
 
         console.log("Fin");
 
